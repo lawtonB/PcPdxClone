@@ -25,7 +25,7 @@ namespace PcPdx.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(SiteUser user)
+        public async Task<IActionResult> Create(SiteUser user)
         {
             db.SiteUsers.Add(user);
             db.SaveChanges();
