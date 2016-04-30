@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Pc-Pdx";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<PcPdx.Models.User>
+
+
+<h2>Users</h2>
+<ul>
+    @foreach (var listUser in Model)
+    {
+        <li>@Html.DisplayFor(ModelShow => listUser.UserName) | @Html.ActionLink("Edit", "Edit", new { id = listUser.UserId }) | @Html.ActionLink("Delete", "Delete", new { id = listUser.UserId })</li>
+
+    }
+</ul>
+<p>@Html.ActionLink("Add new user", "Create")</p>

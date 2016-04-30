@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Pc-Pdx";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model PcPdx.Models.Show
+
+
+<h4>Edit this show: @Html.DisplayFor(model => model.ShowTitle)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.ShowId)
+
+    @Html.LabelFor(model => model.ShowTitle)
+    @Html.EditorFor(model => model.ShowTitle)
+
+    @Html.LabelFor(model => model.UserId)
+    @Html.EditorFor(model => model.UserId)
+
+    <input type="submit" value="Save" />
+}
+<p>@Html.ActionLink("Back to shows", "Index")</p>

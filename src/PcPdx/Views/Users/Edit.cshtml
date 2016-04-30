@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Pc-Pdx";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@model PcPdx.Models.User
+
+
+<h4>Edit this user: @Html.DisplayFor(model => model.UserName)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.UserId)
+
+    @Html.LabelFor(model => model.UserName)
+    @Html.EditorFor(model => model.UserName)
+
+    <input type="submit" value="Save" />
+}
+<p>@Html.ActionLink("Back to users", "Index")</p>

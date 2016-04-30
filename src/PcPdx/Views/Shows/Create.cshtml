@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Pc-Pdx";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model PcPdx.Models.Show
+
+
+<h4> Add a new Show</h4>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.ShowTitle)
+    @Html.TextBoxFor(model => model.ShowTitle)
+    @Html.LabelFor(model => model.UserId)
+    @Html.TextBoxFor(model => model.UserId)
+
+    <input type="submit" value="Add new show" />
+}
+<p>@Html.ActionLink("Index", "Index")</p>

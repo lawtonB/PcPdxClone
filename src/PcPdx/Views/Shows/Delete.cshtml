@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Pc-Pdx";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model PcPdx.Models.Show
+
+<h2>Delete Show</h2>
+<hr />
+
+@Html.DisplayNameFor(model => model.ShowTitle): @Html.DisplayFor(model => model.ShowTitle)
+
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}
+@Html.ActionLink("Back to Shows", "Index")
