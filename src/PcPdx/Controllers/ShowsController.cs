@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Http.Internal;
 using PcPdx.Models;
 using Microsoft.Data.Entity;
-
+using System.Diagnostics;
+using Microsoft.AspNet.Mvc.Rendering;
+using Microsoft.AspNet.Authorization;
 
 
 namespace PcPdx.Controllers

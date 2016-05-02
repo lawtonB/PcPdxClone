@@ -46,7 +46,7 @@ namespace PcPdx.Controllers
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                return RedirectToAction("userList", "Index");
+                return View("Index");
             }
             else
             {

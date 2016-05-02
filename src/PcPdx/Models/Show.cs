@@ -13,7 +13,8 @@ namespace PcPdx.Models
         [Key]
         public int ShowId { get; set; }
         public string ShowTitle { get; set; }
-        public int UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
+        [ForeignKey("ApplicationUserId")]
+        public string ApplicationUserId {get; set;}
     }
 }

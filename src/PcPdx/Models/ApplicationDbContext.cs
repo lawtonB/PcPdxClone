@@ -7,10 +7,11 @@ using Microsoft.Data.Entity;
 
 
 
-namespace PcPdx.Models
+namespace PcPdx.Models 
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
