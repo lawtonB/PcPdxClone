@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Log In";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<PcPdx.Models.ApplicationUser>
+
+<h1>UserList</h1>
+@foreach(var user in Model)
+{
+    <li>@user.UserName</li>
+}

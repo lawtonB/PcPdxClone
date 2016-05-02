@@ -29,6 +29,11 @@ namespace PcPdx.Controllers
             return View();
         }
 
+        public IActionResult userList()
+        {
+            return View(_db.Users.ToList());
+        }
+
         public IActionResult Register()
         {
             return View();
@@ -41,7 +46,7 @@ namespace PcPdx.Controllers
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("userList", "Index");
             }
             else
             {
@@ -74,5 +79,9 @@ namespace PcPdx.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index");
         }
+
+        private ApplicationDbContext db = new ApplicationDbContext();
+        
     }
 }
+
