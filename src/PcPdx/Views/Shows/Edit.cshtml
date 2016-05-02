@@ -11,12 +11,11 @@
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.ShowId)
+    @Html.HiddenFor(model => model.ApplicationUserId)
+
 
     @Html.LabelFor(model => model.ShowTitle)
     @Html.EditorFor(model => model.ShowTitle)
-
-    @Html.LabelFor(model => model.UserId)
-    @Html.EditorFor(model => model.UserId)
 
     <input type="submit" value="Save" />
 }
