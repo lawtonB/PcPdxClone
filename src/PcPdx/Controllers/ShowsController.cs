@@ -29,7 +29,8 @@ namespace PcPdx.Controllers
         }
         public IActionResult Index()
         {
-            return View(_db.Shows.ToList());
+            //return View(_db.Shows.ToList());
+            return View();
         }
 
         public IActionResult Create()
@@ -38,13 +39,16 @@ namespace PcPdx.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Show show)
+        public async Task<IActionResult> Create(string showTitle)
         {
             var currentUser = await _userManager.FindByIdAsync(User.GetUserId());
-            show.User = currentUser;
+            Show show = new Show(showTitle, currentUser.Id);
+            //show.ShowTitle = Request.Form["new-show"];
             _db.Shows.Add(show);
+            show.User = currentUser;
             _db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(show);
+            //return RedirectToAction("Index");
 
         }
         public IActionResult Edit(int id)

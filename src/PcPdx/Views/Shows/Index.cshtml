@@ -2,16 +2,36 @@
     ViewData["Title"] = "Pc-Pdx";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 @model IEnumerable<PcPdx.Models.Show>
 
 
 <h2>Shows</h2>
 <ul>
-    @foreach (var listShow in Model)
+    @*@foreach (var listShow in Model)
     {
         <li>@Html.DisplayFor(ModelShow => listShow.ShowTitle) | @Html.ActionLink("Edit", "Edit", new { id = listShow.ShowId }) | @Html.ActionLink("Delete", "Delete", new { id = listShow.ShowId })</li>
 
-    }
+    }*@
 </ul>
-<p>@Html.ActionLink("Add new Show", "Create")</p>
+    
+    @Html.ActionLink("Add New Show pageLink", "create")<br />
+
+    <a href="#" class="addShow">Add New Show AJAX link</a>
+    <div id="showShow"></div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.addShow').click(function () {
+            $.ajax({
+                type: 'GET',
+                dataType: 'html',
+                url: "Shows/Create",
+                success: function (result) {
+                    $('#showShow').html(result);
+                }
+            })
+        })
+    })
+</script>
