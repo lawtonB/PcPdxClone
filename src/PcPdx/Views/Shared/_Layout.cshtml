@@ -27,7 +27,11 @@
                     <li>@Html.ActionLink("Shows", "Index", "Shows")</li>
                     <li>@Html.ActionLink("Register", "Register", "Account")</li>
                     <li>@Html.ActionLink("Log in", "Login", "Account")</li>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li>@Html.ActionLink("admin", "Create", "Roles")</li>
 
+                    }
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
