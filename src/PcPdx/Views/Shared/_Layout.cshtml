@@ -29,7 +29,7 @@
                     <li>@Html.ActionLink("Log in", "Login", "Account")</li>
                     @if (User.IsInRole("admin"))
                     {
-                        <li>@Html.ActionLink("admin", "Create", "Roles")</li>
+                        <li>@Html.ActionLink("admin", "Index", "Roles")</li>
 
                     }
                 </ul>

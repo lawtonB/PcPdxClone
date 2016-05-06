@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Pc-Pdx";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "";
 }
 
 @{
@@ -8,11 +9,11 @@
 }
 
 
-<h2>Manage User Roles</h2>
+@*<h2>Manage User Roles</h2>
 @Html.ActionLink("Create New Role", "Create") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
-<hr />
+<hr />*@
 
-<h2>Role Add to User</h2>
+<h4>Add Role for User</h4>
 
 @using (Html.BeginForm("RoleAddToUser", "Roles"))
 {
@@ -20,20 +21,20 @@
     @Html.ValidationSummary(true)
 
     <p>
-        Username : @Html.TextBox("UserName")
-        Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
+        Username @Html.TextBox("UserName")
+        Role Name @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
 
     </p>
 
     <input type="submit" value="Save" />
 }
 <hr />
-<h3>Get Roles for a User</h3>
+<h4>Get Role for a User</h4>
 @using (Html.BeginForm("GetRoles", "Roles"))
 {
     @Html.AntiForgeryToken()
     <p>
-        Username : @Html.TextBox("UserName")
+        Username @Html.TextBox("UserName")
         <input type="submit" value="Get Roles for this User" />
     </p>
 }
@@ -60,8 +61,8 @@
     @Html.ValidationSummary(true)
 
     <p>
-        Username : @Html.TextBox("UserName")
-        Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
+        Username @Html.TextBox("UserName")
+        Role Name @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
 
     </p>
 
