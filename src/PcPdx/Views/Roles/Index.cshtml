@@ -24,29 +24,3 @@
         </p>
     }
 </div>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.addRoleCreate').click(function () {
-            $.ajax({
-                type: 'GET',
-                dataType: 'html',
-                url: "Roles/Create",
-                success: function (result) {
-                    $('#showRoleCreate').html(result);
-                }
-            })
-        })
-
-        $('.addManage').click(function () {
-            $.ajax({
-                type: 'GET',
-                dataType: 'html',
-                url: "Roles/ManageUserRoles",
-                success: function (result) {
-                    $('#showManage').html(result);
-                }
-            })
-        })
-    })
-</script>

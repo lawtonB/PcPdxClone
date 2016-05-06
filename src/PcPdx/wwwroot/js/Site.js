@@ -3,7 +3,7 @@
         $.ajax({
             type: 'GET',
             dataType: 'html',
-            url: "~/../../Views/Shows/Create",
+            url: "~/../../Shows/Create",
             success: function (result) {
                 $('#showShow').html(result);
             }
@@ -28,6 +28,21 @@
             url: "~/../../Roles/ManageUserRoles",
             success: function (result) {
                 $('#showManage').html(result);
+            }
+        });
+    });
+
+    $('.new-show').submit(function (event) {
+        event.preventDefault();
+        console.log("start");
+        $.ajax({
+            url: "Shows/Create",
+            type: 'POST',
+            dataType: 'json',
+            data: $(this).serialize(),
+            success: function (result) {
+                //return View("Index");
+                console.log(result)
             }
         });
     });

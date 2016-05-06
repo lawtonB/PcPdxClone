@@ -21,18 +21,3 @@
     <a href="#" class="addShow">Add New Show</a>
     <div id="showShow"></div>
 
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.addShow').click(function () {
-            $.ajax({
-                type: 'GET',
-                dataType: 'html',
-                url: "Shows/Create",
-                success: function (result) {
-                    $('#showShow').html(result);
-                }
-            })
-        })
-    })
-</script>

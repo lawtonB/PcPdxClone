@@ -19,33 +19,3 @@
 
     <input class= "new-show" type="submit" value="Add new show" />
 }
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.addShow').click(function () {
-            $.ajax({
-                type: 'GET',
-                dataType: 'html',
-                url: "Shows/Create",
-                success: function (result) {
-                    $('#showShow').html(result);
-                }
-            })
-        });
-
-        $('.new-show').submit(function (event) {
-            event.preventDefault();
-            console.log("start");
-            $.ajax({
-                url: "Shows/Create",
-                type: 'POST',
-                dataType: 'json',
-                data: $(this).serialize(),
-                success: function (result) {
-                    //return View("Index");
-                    console.log(result)
-                }
-            })
-        })
-    })
-</script>

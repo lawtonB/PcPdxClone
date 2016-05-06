@@ -50,6 +50,7 @@ namespace PcPdx
         {
             app.UseIISPlatformHandler();
             app.UseIdentity();
+            //static files required for js//
             app.UseStaticFiles();
             app.UseMvc(routes =>
             {
