@@ -50,6 +50,7 @@ namespace PcPdx
         {
             app.UseIISPlatformHandler();
             app.UseIdentity();
+            app.UseStaticFiles();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
