@@ -129,33 +129,13 @@ namespace PcPdx.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
             migrationBuilder.CreateTable(
-                name: "SiteUsers",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ApplicationUserId = table.Column<string>(nullable: true),
-                    UserName = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SiteUser", x => x.UserId);
-                    table.ForeignKey(
-                        name: "FK_SiteUser_ApplicationUser_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-            migrationBuilder.CreateTable(
                 name: "Shows",
                 columns: table => new
                 {
                     ShowId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ApplicationUserId = table.Column<string>(nullable: true),
-                    ShowTitle = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: false)
+                    ShowTitle = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -166,12 +146,6 @@ namespace PcPdx.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Show_SiteUser_UserId",
-                        column: x => x.UserId,
-                        principalTable: "SiteUsers",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
                 });
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
@@ -195,7 +169,6 @@ namespace PcPdx.Migrations
             migrationBuilder.DropTable("AspNetUserRoles");
             migrationBuilder.DropTable("Shows");
             migrationBuilder.DropTable("AspNetRoles");
-            migrationBuilder.DropTable("SiteUsers");
             migrationBuilder.DropTable("AspNetUsers");
         }
     }

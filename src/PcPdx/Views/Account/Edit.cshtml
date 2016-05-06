@@ -4,14 +4,14 @@
 }
 
 
-@model PcPdx.Models.SiteUser
+@model PcPdx.Models.ApplicationUser
 
 
 <h4>Edit this user: @Html.DisplayFor(model => model.UserName)</h4>
 
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(model => model.UserId)
+    @Html.HiddenFor(model => model.Id)
 
     @Html.LabelFor(model => model.UserName)
     @Html.EditorFor(model => model.UserName)

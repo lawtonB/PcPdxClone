@@ -3,6 +3,8 @@
     //Layout = "~/Views/Shared/_Layout.cshtml";
     Layout = "";
 }
+@*set layout to "" to not display nav bar*@
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 @model PcPdx.Models.Show
 
@@ -14,8 +16,6 @@
 
     @Html.LabelFor(model => model.ShowTitle)
     @Html.TextBoxFor(model => model.ShowTitle)
-    @*@Html.LabelFor(model => model.ApplicationUserId)
-    @Html.TextBoxFor(model => model.ApplicationUserId)*@
 
     <input class= "new-show" type="submit" value="Add new show" />
 }

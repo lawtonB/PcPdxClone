@@ -39,6 +39,22 @@ namespace PcPdx.Controllers
             return View();
         }
 
+        public IActionResult Delete(string id)
+        {
+            var thisUser = db.Users.FirstOrDefault(users => users.Id == id);
+            //return View(thisUser);
+            return View(thisUser);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(string id)
+        {
+            var thisUser = db.Users.FirstOrDefault(users => users.Id == id);
+            db.Users.Remove(thisUser);
+            db.SaveChanges();
+            return RedirectToAction("index");
+        }
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {

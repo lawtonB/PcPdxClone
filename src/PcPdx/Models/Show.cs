@@ -19,10 +19,11 @@ namespace PcPdx.Models
         [ForeignKey("ApplicationUserId")]
         public string ApplicationUserId {get; set;}
 
-        public Show(string showTitle, string applicationUserId)
+        public Show(string showTitle, string applicationUserId, int showId)
         {
             ShowTitle = showTitle;
             ApplicationUserId = applicationUserId;
+            ShowId = showId;
         }
     }
 }

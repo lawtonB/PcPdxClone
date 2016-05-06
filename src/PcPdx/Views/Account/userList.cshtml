@@ -6,7 +6,11 @@
 @model IEnumerable<PcPdx.Models.ApplicationUser>
 
 <h1>UserList</h1>
-@foreach(var user in Model)
-{
-    <li>@user.UserName</li>
-}
+<ul>
+    @foreach (var user in Model)
+    {
+        <li>@Html.DisplayFor(ModelShow => user.UserName) | @Html.ActionLink("Edit", "Edit", new { id = user.Id }) | @Html.ActionLink("Deletee User", "Delete", "Account", new { id = user.Id })</li>
+
+    }
+</ul>
+

@@ -42,7 +42,7 @@ namespace PcPdx.Controllers
         public async Task<IActionResult> Create(string showTitle)
         {
             var currentUser = await _userManager.FindByIdAsync(User.GetUserId());
-            Show show = new Show(showTitle, currentUser.Id);
+            Show show = new Show(showTitle, currentUser.Id, 0);
             //show.ShowTitle = Request.Form["new-show"];
             _db.Shows.Add(show);
             show.User = currentUser;

@@ -8,8 +8,8 @@ using PcPdx.Models;
 namespace PcPdx.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160502193801_foreignkeyuserforshow")]
-    partial class foreignkeyuserforshow
+    [Migration("20160506173755_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
