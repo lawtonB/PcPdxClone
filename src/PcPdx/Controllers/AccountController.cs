@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity;
 using PcPdx.Models;
 
 using PcPdx.ViewModels;
-
+using Microsoft.Data.Entity;
 
 namespace PcPdx.Controllers
 {
@@ -41,7 +41,7 @@ namespace PcPdx.Controllers
 
         public IActionResult Delete(string id)
         {
-            var thisUser = db.Users.FirstOrDefault(users => users.Id == id);
+            var thisUser = db.Users.FirstOrDefault(user => user.Id == id);
             //return View(thisUser);
             return View(thisUser);
         }
@@ -55,7 +55,21 @@ namespace PcPdx.Controllers
             return RedirectToAction("index");
         }
 
+        public IActionResult Edit(string id)
+        {
+            var thisUser = db.Users.FirstOrDefault(user => user.Id == id);
+            return View(thisUser);
+        }
+
         [HttpPost]
+        public IActionResult Edit(ApplicationUser user)
+        {
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("index");
+        }
+
+    [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             var user = new ApplicationUser { UserName = model.Email };

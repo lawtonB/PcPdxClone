@@ -27,10 +27,11 @@ namespace PcPdx.Controllers
             _signInManager = signInManager;
             _db = db;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            //return View(_db.Shows.ToList());
-            return View();
+            var currentUser = await _userManager.FindByIdAsync(User.GetUserId());
+            var showlist = _db.Shows.Where(x => x.User.Id == currentUser.Id);
+            return View(showlist);
         }
 
         public IActionResult Create()
@@ -47,10 +48,11 @@ namespace PcPdx.Controllers
             _db.Shows.Add(show);
             show.User = currentUser;
             _db.SaveChanges();
-            return Json(show);
-            //return RedirectToAction("Index");
+            //return Json(show);
+            return RedirectToAction("Index", "Shows");
 
         }
+        //user edit currently broken: "optimistic" error
         public IActionResult Edit(int id)
         {
             var thisShow = _db.Shows.FirstOrDefault(shows => shows.ShowId == id);

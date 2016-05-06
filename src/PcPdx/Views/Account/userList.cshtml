@@ -9,7 +9,7 @@
 <ul>
     @foreach (var user in Model)
     {
-        <li>@Html.DisplayFor(ModelShow => user.UserName) | @Html.ActionLink("Edit", "Edit", new { id = user.Id }) | @Html.ActionLink("Deletee User", "Delete", "Account", new { id = user.Id })</li>
+        <li>@Html.DisplayFor(ModelShow => user.UserName) | @Html.ActionLink("Edit User", "Edit", "Account", new { id = user.Id }) | @Html.ActionLink("Delete User", "Delete", "Account", new { id = user.Id })</li>
 
     }
 </ul>
