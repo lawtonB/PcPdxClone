@@ -13,9 +13,9 @@ namespace PcPdx.Models
         [Key]
         public int ShowId { get; set; }
         public string ShowTitle { get; set; }
-
+        [NotMapped]
         public virtual ApplicationUser User { get; set; }
-        [ForeignKey("ApplicationUserId")]
+        //[ForeignKey("ApplicationUserId")]
 
         public string ApplicationUserId {get; set;}
         public Show(string showTitle, string applicationUserId, int showId)
@@ -24,5 +24,7 @@ namespace PcPdx.Models
             ApplicationUserId = applicationUserId;
             ShowId = showId;
         }
+
+        public Show() { }
     }
 }

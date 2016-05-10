@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Pc-Pdx";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model PcPdx.Models.Show
+
+<script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+<script src="~/js/EnvironmentVariables.js"></script>
+<script>
+
+
+var track_url = 'http://soundcloud.com/the-woolen-men';
+
+$.getJSON('http://soundcloud.com/oembed?callback=?',
+{ format: 'js', url: track_url, iframe: true },
+function (data) {
+    $('#your_player_div').html(data['html'])
+}
+)
+
+</script>
+
+<div id="your_player_div"></div>

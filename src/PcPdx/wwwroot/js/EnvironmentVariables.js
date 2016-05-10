@@ -1,0 +1,2 @@
+﻿var clientId = "b2e53350626c6db99a0761b997091237";
+var clientSecret = "b084e89f626a08a07040137c4ca15196";

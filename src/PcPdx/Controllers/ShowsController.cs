@@ -27,10 +27,12 @@ namespace PcPdx.Controllers
             _signInManager = signInManager;
             _db = db;
         }
-        public async Task<IActionResult> Index()
-        {
-            var currentUser = await _userManager.FindByIdAsync(User.GetUserId());
-            var showlist = _db.Shows.Where(x => x.User.Id == currentUser.Id);
+        public IActionResult Index()
+        {        
+            //var currentUser = await _userManager.FindByIdAsync(User.GetUserId());
+            //Console.WriteLine(currentUser.Id);
+            var showlist = _db.Shows.Where(x => x.ApplicationUserId == User.GetUserId()).ToList();
+            Console.WriteLine(showlist);
             return View(showlist);
         }
 
@@ -48,8 +50,8 @@ namespace PcPdx.Controllers
             _db.Shows.Add(show);
             show.User = currentUser;
             _db.SaveChanges();
-            //return Json(show);
-            return RedirectToAction("Index", "Shows");
+            return Json(show);
+            //return RedirectToAction("Index", "Shows");
 
         }
         //user edit currently broken: "optimistic" error
@@ -80,6 +82,11 @@ namespace PcPdx.Controllers
             _db.Shows.Remove(thisShow);
             _db.SaveChanges();
             return RedirectToAction("index");
+        }
+
+        public IActionResult Songs()
+        {
+            return View();
         }
     }
 }

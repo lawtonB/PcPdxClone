@@ -42,7 +42,7 @@
             data: $(this).serialize(),
             success: function (result) {
                 //return View("Index");
-                console.log(result)
+                //$('#listShow').html(result.ShowTitle)
             }
         });
     });
