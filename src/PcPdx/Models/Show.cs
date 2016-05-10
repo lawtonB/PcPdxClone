@@ -13,15 +13,20 @@ namespace PcPdx.Models
         [Key]
         public int ShowId { get; set; }
         public string ShowTitle { get; set; }
+        public string BandName { get; set; }
+        public string SoundCloudId { get; set; }
+
         [NotMapped]
         public virtual ApplicationUser User { get; set; }
         //[ForeignKey("ApplicationUserId")]
 
         public string ApplicationUserId {get; set;}
-        public Show(string showTitle, string applicationUserId, int showId)
+        public Show(string showTitle, string applicationUserId, string bandName, string soundCloudId, int showId)
         {
             ShowTitle = showTitle;
             ApplicationUserId = applicationUserId;
+            BandName = bandName;
+            SoundCloudId = soundCloudId;
             ShowId = showId;
         }
 

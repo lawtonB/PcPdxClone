@@ -42,10 +42,10 @@ namespace PcPdx.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(string showTitle)
+        public async Task<IActionResult> Create(string showTitle, string bandName, string SoundCloudId)
         {
             var currentUser = await _userManager.FindByIdAsync(User.GetUserId());
-            Show show = new Show(showTitle, currentUser.Id, 0);
+            Show show = new Show(showTitle, currentUser.Id, bandName, SoundCloudId, 0);
             //show.ShowTitle = Request.Form["new-show"];
             _db.Shows.Add(show);
             show.User = currentUser;
@@ -54,7 +54,6 @@ namespace PcPdx.Controllers
             return RedirectToAction("Index", "Shows");
 
         }
-        //user edit currently broken: "optimistic" error
         public IActionResult Edit(int id)
         {
             var thisShow = _db.Shows.FirstOrDefault(shows => shows.ShowId == id);

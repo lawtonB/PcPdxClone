@@ -8,9 +8,10 @@ using PcPdx.Models;
 namespace PcPdx.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160510214836_songmodel")]
+    partial class songmodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -153,15 +154,27 @@ namespace PcPdx.Migrations
 
                     b.Property<string>("ApplicationUserId");
 
-                    b.Property<string>("BandName");
-
                     b.Property<string>("ShowTitle");
-
-                    b.Property<string>("SoundCloudId");
 
                     b.HasKey("ShowId");
 
                     b.HasAnnotation("Relational:TableName", "Shows");
+                });
+
+            modelBuilder.Entity("PcPdx.Models.Song", b =>
+                {
+                    b.Property<int>("SongId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("SongTitle");
+
+                    b.Property<string>("SoundCloud");
+
+                    b.Property<int?>("showsShowId");
+
+                    b.HasKey("SongId");
+
+                    b.HasAnnotation("Relational:TableName", "Songs");
                 });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>
@@ -201,6 +214,13 @@ namespace PcPdx.Migrations
                     b.HasOne("PcPdx.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("ApplicationUserId");
+                });
+
+            modelBuilder.Entity("PcPdx.Models.Song", b =>
+                {
+                    b.HasOne("PcPdx.Models.Show")
+                        .WithMany()
+                        .HasForeignKey("showsShowId");
                 });
         }
     }

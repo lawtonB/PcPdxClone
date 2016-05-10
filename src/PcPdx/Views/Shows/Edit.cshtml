@@ -20,3 +20,27 @@
     <input type="submit" value="Save" />
 }
 <p>@Html.ActionLink("Back to shows", "Index")</p>
+
+<script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+<script src="~/js/EnvironmentVariables.js"></script>
+<script>
+
+ var id = "@(Model.SoundCloudId)";
+
+var target =id.replace(/(^\s+|[^a-zA-Z0-9 ]+|\s+$)/g, "");
+target = target.replace(/\s+/g, "-");
+
+console.log(target);
+
+var track_url = 'http://soundcloud.com/' + target;
+
+$.getJSON('http://soundcloud.com/oembed?callback=?',
+{ format: 'js', url: track_url, iframe: true },
+function (data) {
+    $('#your_player_div').html(data['html'])
+}
+)
+
+</script>
+
+<div id="your_player_div"></div>
