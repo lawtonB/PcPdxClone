@@ -50,8 +50,8 @@ namespace PcPdx.Controllers
             _db.Shows.Add(show);
             show.User = currentUser;
             _db.SaveChanges();
-            return Json(show);
-            //return RedirectToAction("Index", "Shows");
+            //return Json(show);
+            return RedirectToAction("Index", "Shows");
 
         }
         //user edit currently broken: "optimistic" error
